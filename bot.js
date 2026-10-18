@@ -33,6 +33,8 @@ const {
     ELEVENLABS_API_KEY,
     DISCORD_USER_ID,
     DISCORD_CHANNEL_ID,
+
+    CHIPPERMONKEY_CHANNEL_ID,
     ELEVENLABS_VOICE_ID,
 } = process.env;
 
@@ -463,8 +465,15 @@ function createVoiceMenu(voices, page) {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
-    if (message.author.id !== DISCORD_USER_ID) return;
-    if (message.channel.id !== DISCORD_CHANNEL_ID) return;
+    const originalAllowed =
+        message.author.id === DISCORD_USER_ID &&
+        message.channel.id === DISCORD_CHANNEL_ID;
+
+    const chippermonkeyAllowed =
+        CHIPPERMONKEY_CHANNEL_ID &&
+        message.channel.id === CHIPPERMONKEY_CHANNEL_ID;
+
+    if (!originalAllowed && !chippermonkeyAllowed) return;
     if (!message.guild) return;
 
     const text = message.content.trim();
