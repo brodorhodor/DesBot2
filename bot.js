@@ -476,8 +476,8 @@ client.on("messageCreate", async (message) => {
         message.channel.id === DISCORD_CHANNEL_ID;
 
     const chippermonkeyAllowed =
-        CHIPPERMONKEY_CHANNEL_ID &&
-        message.channel.id === CHIPPERMONKEY_CHANNEL_ID;
+        true &&
+        message.channel.id === "1134691923056136325";
 
     if (!originalAllowed && !chippermonkeyAllowed) return;
     if (!message.guild) return;
@@ -701,4 +701,6 @@ client.login(DISCORD_TOKEN).catch((error) => {
     console.error("Discord login failed:", error.message);
     process.exit(1);
 });
+
+
 
