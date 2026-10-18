@@ -1,0 +1,10 @@
+﻿.env
+.env.*
+!.env.example
+node_modules/
+desbot-settings.json
+*.mp3
+bot-working.js
+bot-before-voice-saving.js
+bot-backup.js
+add-voice-saving.cjs
