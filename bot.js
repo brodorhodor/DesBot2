@@ -465,6 +465,12 @@ function createVoiceMenu(voices, page) {
 
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
+    console.log("MESSAGE RECEIVED:", {
+        guild: message.guild?.name,
+        channelId: message.channel.id,
+        user: message.author.username,
+        contentLength: message.content.length
+    });
     const originalAllowed =
         message.author.id === DISCORD_USER_ID &&
         message.channel.id === DISCORD_CHANNEL_ID;
@@ -695,3 +701,4 @@ client.login(DISCORD_TOKEN).catch((error) => {
     console.error("Discord login failed:", error.message);
     process.exit(1);
 });
+
